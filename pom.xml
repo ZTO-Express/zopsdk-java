@@ -6,7 +6,8 @@
 
     <groupId>com.zto.zop</groupId>
     <artifactId>zopsdk</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.2</version>
+    <packaging>jar</packaging>
 
     <properties>
         <java.version>1.6</java.version>
@@ -25,6 +26,13 @@
             <version>1.11</version>
         </dependency>
     </dependencies>
+    <distributionManagement>
+      <repository>
+
+          <id>bintray-repo-maven</id>
+          <url>https://api.bintray.com/maven/chocotan/maven/zopsdk-java/;publish=1</url>
+      </repository>
+    </distributionManagement>
     <build>
         <plugins>
             <plugin>

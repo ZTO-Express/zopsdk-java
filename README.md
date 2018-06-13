@@ -4,8 +4,18 @@
 
 在pom.xml里添加如下依赖
 ```xml
+<repositories>
+    <repository>
+        <id>zto-maven</id>
+        <url>https://dl.bintray.com/chocotan/maven</url>
+    </repository>
+</repositories>
 
-
+<dependency>
+    <groupId>com.zto.zop</groupId>
+    <artifactId>zopsdk</artifactId>
+    <version>0.2</version>
+</dependency>
 ```
 
 
