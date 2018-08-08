@@ -1,14 +1,8 @@
 package com.zto.zop;
 
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.codec.digest.DigestUtils;
-import sun.net.www.http.HttpClient;
-
-import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.security.Key;
 import java.util.HashMap;
 import java.util.Map;
 
