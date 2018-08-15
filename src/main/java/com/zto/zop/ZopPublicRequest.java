@@ -1,13 +1,8 @@
 package com.zto.zop;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.HashMap;
 import java.util.Map;
 
-@Getter
-@Setter
 public class ZopPublicRequest {
     private String url;
     private Map<String, String> params = new HashMap<String, String>();
@@ -23,5 +18,21 @@ public class ZopPublicRequest {
         for (Map.Entry<String, String> entry : p.entrySet()) {
             params.put(entry.getKey(), entry.getValue());
         }
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Map<String, String> getParams() {
+        return params;
+    }
+
+    public void setParams(Map<String, String> params) {
+        this.params = params;
     }
 }
