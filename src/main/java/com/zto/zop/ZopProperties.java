@@ -1,7 +1,5 @@
 package com.zto.zop;
 
-import lombok.Data;
-
 public class ZopProperties {
     private String companyId;
     private String key;
