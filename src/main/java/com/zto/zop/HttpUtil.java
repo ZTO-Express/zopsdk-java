@@ -32,7 +32,7 @@ public class HttpUtil {
             out.write(queryString.getBytes(Charset.forName("UTF-8")));
             out.flush();
             in = new BufferedReader(
-                    new InputStreamReader(con.getInputStream()));
+                    new InputStreamReader(con.getInputStream(), "UTF-8"));
             String inputLine;
             StringBuilder content = new StringBuilder();
             while ((inputLine = in.readLine()) != null) {
