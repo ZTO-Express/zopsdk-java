@@ -17,7 +17,7 @@ jdk1.6
 <dependency>
     <groupId>com.zto.zop</groupId>
     <artifactId>zopsdk</artifactId>
-    <version>0.5</version>
+    <version>0.6</version>
 </dependency>
 ```
 
