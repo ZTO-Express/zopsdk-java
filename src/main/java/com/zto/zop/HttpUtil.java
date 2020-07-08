@@ -56,4 +56,48 @@ public class HttpUtil {
 
     }
 
+
+    public static String postJson(String interfaceUrl, Map<String, String> headers, String json) throws IOException {
+        URL url = new URL(interfaceUrl);
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+        con.setDoOutput(true);
+        con.setConnectTimeout(DEFAULT_TIMEOUT);
+        con.setReadTimeout(DEFAULT_TIMEOUT);
+        for (Map.Entry<String, String> e : headers.entrySet()) {
+            con.setRequestProperty(e.getKey(), e.getValue());
+        }
+        DataOutputStream out = null;
+
+        BufferedReader in = null;
+        try {
+            out = new DataOutputStream(con.getOutputStream());
+            out.write(json.getBytes(Charset.forName("UTF-8")));
+            out.flush();
+            in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream(), "UTF-8"));
+            String inputLine;
+            StringBuilder content = new StringBuilder();
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+            return content.toString();
+        } finally {
+            if (out != null) {
+                try {
+                    out.close();
+                } catch (Exception ignored) {
+                }
+            }
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (Exception ignored) {
+                }
+            }
+        }
+
+    }
+
 }

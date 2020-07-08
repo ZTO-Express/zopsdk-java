@@ -7,7 +7,20 @@ public class ZopPublicRequest {
     private String url;
     private Map<String, String> params = new HashMap<String, String>();
 
+
+    // 如果body有值，表示使用application/json的方式传值
+    private String body;
+
     public ZopPublicRequest() {
+    }
+
+    public void setBody(String body){
+        this.body = body;
+    }
+
+
+    public String getBody() {
+        return body;
     }
 
     public void addParam(String k, String v) {

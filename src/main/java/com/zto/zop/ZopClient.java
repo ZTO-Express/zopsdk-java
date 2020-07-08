@@ -13,27 +13,34 @@ public class ZopClient {
         this.properties = properties;
     }
 
-    public ZopClient(String companyId, String key) {
-        this.properties = new ZopProperties(companyId, key);
+    public ZopClient(String appKey, String appSecret) {
+        this.properties = new ZopProperties(appKey, appSecret);
     }
 
-
     public String execute(ZopPublicRequest request) throws IOException {
-        Map<String, String> params = request.getParams();
-        StringBuilder queryBuilder = new StringBuilder();
-        StringBuilder strToDigestBuilder = new StringBuilder();
-        for (Map.Entry<String, String> e : params.entrySet()) {
-            strToDigestBuilder.append(e.getKey()).append("=").append(e.getValue()).append("&");
-            queryBuilder.append(urlEncode(e.getKey())).append("=").append(urlEncode(e.getValue())).append("&");
+        String jsonBody = request.getBody();
+        if (jsonBody == null) {
+            Map<String, String> params = request.getParams();
+            StringBuilder queryBuilder = new StringBuilder();
+            StringBuilder strToDigestBuilder = new StringBuilder();
+            for (Map.Entry<String, String> e : params.entrySet()) {
+                strToDigestBuilder.append(e.getKey()).append("=").append(e.getValue()).append("&");
+                queryBuilder.append(urlEncode(e.getKey())).append("=").append(urlEncode(e.getValue())).append("&");
+            }
+            String queryString = queryBuilder.substring(0, queryBuilder.length() - 1);
+            String strToDigest = strToDigestBuilder.substring(0, strToDigestBuilder.length() - 1);
+            strToDigest = strToDigest + properties.getKey();
+            Map<String, String> headers = new HashMap<String, String>();
+            headers.put("x-companyid", properties.getCompanyId());
+            headers.put("x-datadigest", ZopDigestUtil.digest(strToDigest));
+            return HttpUtil.post(request.getUrl(), headers, queryString);
+        } else {
+            Map<String, String> headers = new HashMap<String, String>();
+            String strToDigest = jsonBody + properties.getKey();
+            headers.put("x-companyid", properties.getCompanyId());
+            headers.put("x-datadigest", ZopDigestUtil.digest(strToDigest));
+            return HttpUtil.postJson(request.getUrl(), headers, jsonBody);
         }
-
-        String queryString = queryBuilder.substring(0, queryBuilder.length() - 1);
-        String strToDigest = strToDigestBuilder.substring(0, strToDigestBuilder.length() - 1);
-        strToDigest = strToDigest + properties.getKey();
-        Map<String, String> headers = new HashMap<String, String>();
-        headers.put("x-companyid", properties.getCompanyId());
-        headers.put("x-datadigest", ZopDigestUtil.digest(strToDigest));
-        return HttpUtil.post(request.getUrl(), headers, queryString);
     }
 
 

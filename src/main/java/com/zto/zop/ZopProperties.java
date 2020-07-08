@@ -4,9 +4,12 @@ public class ZopProperties {
     private String companyId;
     private String key;
 
-    public ZopProperties(String companyId, String key) {
-        this.companyId = companyId;
-        this.key = key;
+    public ZopProperties() {
+    }
+
+    public ZopProperties(String appKey, String appSecret) {
+        this.companyId = appKey;
+        this.key = appSecret;
     }
 
     public String getCompanyId() {
