@@ -41,11 +41,11 @@
         </dependency>
     </dependencies>
     <distributionManagement>
-      <repository>
-
-          <id>bintray-repo-maven</id>
-          <url>https://api.bintray.com/maven/chocotan/maven/zopsdk-java/;publish=1</url>
-      </repository>
+        <repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/chocotan/zop-sdk/</url>
+        </repository>
     </distributionManagement>
     <build>
         <plugins>
