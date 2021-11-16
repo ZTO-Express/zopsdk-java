@@ -1,5 +1,8 @@
 package com.zto.zop;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +28,21 @@ public class ZopPublicRequest {
 
     public void addParam(String k, String v) {
         params.put(k, v);
+    }
+
+    public void setData(String data) {
+        try {
+            JSONObject jsonObject = JSON.parseObject(data);
+            for (Map.Entry<String, Object> entry : jsonObject.entrySet()) {
+                params.put(entry.getKey(), entry.getValue().toString());
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("JSON格式不对,请检查数据", e);
+        }
+    }
+
+    public void setDataObj(Map<String, String> data) {
+        params.putAll(data);
     }
 
     public void addParam(Map<String, String> p) {
