@@ -44,7 +44,7 @@
         <repository>
             <id>github</id>
             <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/chocotan/zop-sdk/</url>
+            <url>https://maven.pkg.github.com/ZTO-Express/zopsdk-java/</url>
         </repository>
     </distributionManagement>
     <build>
