@@ -28,7 +28,7 @@ ZopClient client=new ZopClient("kfpttestCode","kfpttestkey==");
         "\t\t\"receive_address\": \"610号和兴润园二期1栋2单元1003室\"\n"+
         "\t}\n"+
         "}");
-        request.setUrl("http://58.40.16.120:9001/submitOrderCode");
+        request.setUrl("https://japi-test.zto.com/submitOrderCode");
         //指定是否需要base64，不指定默认为true
         request.setBase64(true);
         //指定加密方式，MD5或者SHA256，如果不指定默认为MD5
