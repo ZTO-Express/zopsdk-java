@@ -12,8 +12,8 @@ jdk1.6及以上
 ZopClient client=new ZopClient("kfpttestCode","kfpttestkey==");
         ZopPublicRequest request=new ZopPublicRequest();
         //Content-Type为application/x-www-form-urlencoded的请使用request.addParam方法将"业务参数"添加进来，每个接口的"业务参数"请参考文档描述
-        //Content-Type为application/json的请使用request.setData将请求json添加进来
-        request.setData("{\n"+
+        //Content-Type为application/json的请使用request.setBody将请求json添加进来
+        request.setBody("{\n"+
         "\t\"company_id\": \"kfpttestCode\",\n"+
         "\t\"msg_type\": \"GETMARK\",\n"+
         "\t\"data\": {\n"+
