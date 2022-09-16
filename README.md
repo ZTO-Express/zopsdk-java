@@ -33,6 +33,8 @@ ZopClient client=new ZopClient("kfpttestCode","kfpttestkey==");
         request.setBase64(true);
         //指定加密方式，MD5或者SHA256，如果不指定默认为MD5
         request.setEncryptionType(EncryptionType.SHA256);
+        //非appSecret,当加密方式为EncryptionType.HmacSHA256时，需要配置额外的HmacSHA256加密key，此key要和中通开放平台上的加密key一致
+        request.setSecretKey("secrest_key");
         //请求头中指定时间戳，如果接口文档上标注需使用时间戳则使用，其他不要设定值，否则会导致签名错误
         request.setTimestamp(System.currentTimeMillis());
         System.out.println(client.execute(request));
