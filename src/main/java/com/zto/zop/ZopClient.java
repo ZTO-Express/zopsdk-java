@@ -32,16 +32,16 @@ public class ZopClient {
             strToDigest = strToDigest + properties.getKey();
             Map<String, String> headers = new HashMap<String, String>();
             headers.put("x-companyid", properties.getCompanyId());
-            headers.put("x-datadigest", ZopDigestUtil.digest(strToDigest, request.getBase64(), request.getEncryptionType(), request.getTimestamp()));
+            headers.put("x-datadigest", ZopDigestUtil.digest(strToDigest, request.getBase64(), request.getEncryptionType(), request.getTimestamp(), request.getSecretKey()));
             if (request.getTimestamp() != null) {
                 headers.put("x-timestamp", String.valueOf(request.getTimestamp()));
             }
             return HttpUtil.post(request.getUrl(), headers, queryString);
         } else {
-            Map<String, String> headers = new HashMap<String, String>();
+            Map<String, String> headers = new HashMap<>();
             String strToDigest = jsonBody + properties.getKey();
             headers.put("x-companyid", properties.getCompanyId());
-            headers.put("x-datadigest", ZopDigestUtil.digest(strToDigest, request.getBase64(), request.getEncryptionType(), request.getTimestamp()));
+            headers.put("x-datadigest", ZopDigestUtil.digest(strToDigest, request.getBase64(), request.getEncryptionType(), request.getTimestamp(), request.getSecretKey()));
             if (request.getTimestamp() != null) {
                 headers.put("x-timestamp", String.valueOf(request.getTimestamp()));
             }

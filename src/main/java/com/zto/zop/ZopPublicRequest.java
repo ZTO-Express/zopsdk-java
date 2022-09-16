@@ -26,6 +26,11 @@ public class ZopPublicRequest {
     private EncryptionType encryptionType;
 
     /**
+     * HmacSHA256加密key
+     */
+    private String secretKey;
+
+    /**
      * 时间戳，如果接口文档未标识使用时间戳请不要传值，否则会导致签名错误
      */
     private Long timestamp;
@@ -97,6 +102,14 @@ public class ZopPublicRequest {
 
     public void setEncryptionType(EncryptionType encryptionType) {
         this.encryptionType = encryptionType;
+    }
+
+    public String getSecretKey() {
+        return secretKey;
+    }
+
+    public void setSecretKey(String secretKey) {
+        this.secretKey = secretKey;
     }
 
     public Long getTimestamp() {

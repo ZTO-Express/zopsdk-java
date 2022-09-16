@@ -6,6 +6,7 @@ package com.zto.zop;
 
 public enum EncryptionType {
     MD5,
-    SHA256
+    SHA256,
+    HmacSHA256
 
 }
