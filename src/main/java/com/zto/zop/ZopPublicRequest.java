@@ -23,7 +23,7 @@ public class ZopPublicRequest {
     /**
      * 加密方式，MD5或者SHA256
      */
-    private EncryptionType encryptionType;
+    private EncryptionType encryptionType = EncryptionType.MD5;
 
     /**
      * HmacSHA256加密key
@@ -38,7 +38,7 @@ public class ZopPublicRequest {
     public ZopPublicRequest() {
     }
 
-    public void setBody(String body){
+    public void setBody(String body) {
         this.body = body;
     }
 
